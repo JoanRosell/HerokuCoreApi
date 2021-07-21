@@ -1,0 +1,242 @@
+{
+	"info": {
+		"_postman_id": "33974e53-e2f4-4ab7-967a-ab92142cff2c",
+		"name": "HerokuCoreApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{heroku_url}}/api/calculator/add?lhs=2&rhs=2",
+					"host": [
+						"{{heroku_url}}"
+					],
+					"path": [
+						"api",
+						"calculator",
+						"add"
+					],
+					"query": [
+						{
+							"key": "lhs",
+							"value": "2"
+						},
+						{
+							"key": "rhs",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add integer overflow",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{heroku_url}}/api/calculator/add?lhs=2&rhs=2147483646",
+					"host": [
+						"{{heroku_url}}"
+					],
+					"path": [
+						"api",
+						"calculator",
+						"add"
+					],
+					"query": [
+						{
+							"key": "lhs",
+							"value": "2"
+						},
+						{
+							"key": "rhs",
+							"value": "2147483646"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Subtract",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{heroku_url}}/api/calculator/subtract?lhs=2&rhs=2",
+					"host": [
+						"{{heroku_url}}"
+					],
+					"path": [
+						"api",
+						"calculator",
+						"subtract"
+					],
+					"query": [
+						{
+							"key": "lhs",
+							"value": "2"
+						},
+						{
+							"key": "rhs",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Multiply",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/calculator/multiply?lhs=2&rhs=2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"calculator",
+						"multiply"
+					],
+					"query": [
+						{
+							"key": "lhs",
+							"value": "2"
+						},
+						{
+							"key": "rhs",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Multiply integer overflow Copy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/calculator/multiply?lhs=2&rhs=2147483646",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"calculator",
+						"multiply"
+					],
+					"query": [
+						{
+							"key": "lhs",
+							"value": "2"
+						},
+						{
+							"key": "rhs",
+							"value": "2147483646"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Divide",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/calculator/divide?lhs=2&rhs=4",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"calculator",
+						"divide"
+					],
+					"query": [
+						{
+							"key": "lhs",
+							"value": "2"
+						},
+						{
+							"key": "rhs",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Divide by zero",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/calculator/divide?lhs=2&rhs=0",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"calculator",
+						"divide"
+					],
+					"query": [
+						{
+							"key": "lhs",
+							"value": "2"
+						},
+						{
+							"key": "rhs",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "local_url",
+			"value": "https://localhost:5001"
+		},
+		{
+			"key": "heroku_url",
+			"value": "https://vueling-calculator.herokuapp.com/"
+		}
+	]
+}
