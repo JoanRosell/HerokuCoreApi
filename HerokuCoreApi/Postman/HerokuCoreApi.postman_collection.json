@@ -7,6 +7,28 @@
 	"item": [
 		{
 			"name": "Add",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let query = {};\r",
+							"pm.request.url.query.all().forEach((param) => { query[param.key] = parseInt(param.value) })\r",
+							"\r",
+							"pm.test(\"Addition works\", () => {\r",
+							"    const expected_value = query[\"lhs\"] + query[\"rhs\"];\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(expected_value).to.eql(response);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -36,6 +58,19 @@
 		},
 		{
 			"name": "Add integer overflow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -65,6 +100,28 @@
 		},
 		{
 			"name": "Subtract",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let query = {};\r",
+							"pm.request.url.query.all().forEach((param) => { query[param.key] = parseInt(param.value) })\r",
+							"\r",
+							"pm.test(\"Subtraction works\", () => {\r",
+							"    const expected_value = query[\"lhs\"] - query[\"rhs\"];\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(expected_value).to.eql(response);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -94,13 +151,35 @@
 		},
 		{
 			"name": "Multiply",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let query = {};\r",
+							"pm.request.url.query.all().forEach((param) => { query[param.key] = parseInt(param.value) })\r",
+							"\r",
+							"pm.test(\"Multiplication works\", () => {\r",
+							"    const expected_value = query[\"lhs\"] * query[\"rhs\"];\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(expected_value).to.eql(response);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/calculator/multiply?lhs=2&rhs=2",
+					"raw": "{{heroku_url}}/api/calculator/multiply?lhs=2&rhs=2",
 					"host": [
-						"{{base_url}}"
+						"{{heroku_url}}"
 					],
 					"path": [
 						"api",
@@ -122,14 +201,27 @@
 			"response": []
 		},
 		{
-			"name": "Multiply integer overflow Copy",
+			"name": "Multiply integer overflow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/calculator/multiply?lhs=2&rhs=2147483646",
+					"raw": "{{heroku_url}}/api/calculator/multiply?lhs=2&rhs=2147483646",
 					"host": [
-						"{{base_url}}"
+						"{{heroku_url}}"
 					],
 					"path": [
 						"api",
@@ -152,13 +244,35 @@
 		},
 		{
 			"name": "Divide",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"let query = {};\r",
+							"pm.request.url.query.all().forEach((param) => { query[param.key] = parseInt(param.value) })\r",
+							"\r",
+							"pm.test(\"Division works\", () => {\r",
+							"    const expected_value = parseInt(query[\"lhs\"] / query[\"rhs\"]);\r",
+							"    const response = pm.response.json();\r",
+							"    pm.expect(expected_value).to.eql(response);\r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/calculator/divide?lhs=2&rhs=4",
+					"raw": "{{heroku_url}}/api/calculator/divide?lhs=2&rhs=4",
 					"host": [
-						"{{base_url}}"
+						"{{heroku_url}}"
 					],
 					"path": [
 						"api",
@@ -181,13 +295,26 @@
 		},
 		{
 			"name": "Divide by zero",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 500\", function () {\r",
+							"    pm.response.to.have.status(500);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{base_url}}/api/calculator/divide?lhs=2&rhs=0",
+					"raw": "{{heroku_url}}/api/calculator/divide?lhs=2&rhs=0",
 					"host": [
-						"{{base_url}}"
+						"{{heroku_url}}"
 					],
 					"path": [
 						"api",
@@ -215,6 +342,7 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
+					"",
 					""
 				]
 			}
@@ -236,7 +364,7 @@
 		},
 		{
 			"key": "heroku_url",
-			"value": "https://vueling-calculator.herokuapp.com/"
+			"value": "https://vueling-calculator.herokuapp.com"
 		}
 	]
 }
